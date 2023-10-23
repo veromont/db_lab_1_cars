@@ -43,6 +43,14 @@ class UserAdmin(admin.ModelAdmin):
     list_display = ['id', 'is_admin', 'name', 'username', 'password', 'registration_date', 'credit_score']
 
 
+class ArticleTagAdmin(admin.ModelAdmin):
+    list_display = ['tag', 'article']
+
+
+class DealershipAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name', 'address']
+
+
 admin.site.register(CarModel, CarModelAdmin)
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(CarRecord, CarRecordAdmin)
@@ -57,4 +65,5 @@ admin.site.register(CarPhoto)
 admin.site.register(DealReview)
 admin.site.register(DealerWorkHistoryRecord)
 admin.site.register(FeaturesCarRecord)
-admin.site.register(ArticleTag)
+admin.site.register(ArticleTag, ArticleTagAdmin)
+admin.site.register(Dealership, DealershipAdmin)

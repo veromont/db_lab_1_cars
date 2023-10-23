@@ -25,6 +25,9 @@ class Article(models.Model):
         db_table = 'articles'
         app_label = "lab"
 
+    def __str__(self):
+        return self.title
+
 
 class CarModel(models.Model):
     MANUAL = 1
@@ -75,7 +78,7 @@ class CarRecord(models.Model):
     )
 
     id = models.IntegerField(primary_key=True)
-    vin = models.CharField(db_column='VIN', unique=True, max_length=17)
+    vin = models.CharField(db_column='vin', max_length=17)
     name = models.CharField(max_length=64)
     car_model = models.ForeignKey(CarModel, models.DO_NOTHING)
     color_hex = models.CharField(max_length=7)
@@ -91,6 +94,9 @@ class CarRecord(models.Model):
         managed = True
         db_table = 'car_records'
         app_label = "lab"
+
+    def __str__(self):
+        return self.name.__str__()
 
 
 class DealReview(models.Model):
@@ -133,7 +139,7 @@ class Dealer(models.Model):
         app_label = "lab"
 
     def __str__(self):
-        return id.__str__()
+        return self.user.__str__()
 
 
 class Dealership(models.Model):
@@ -219,6 +225,9 @@ class Maker(models.Model):
         managed = True
         db_table = 'makers'
         app_label = "lab"
+
+    def __str__(self):
+        return self.name
 
 
 class Region(models.Model):
